@@ -42,10 +42,18 @@ namespace Geometry
 
 
         coordhom &
-        operator=( const coordhom &u );
+        operator=( const coordhom &u ) = delete;
 
         coordhom &
-        operator=( coordhom &&u ) = default;
+        operator=( coordhom &&u ) = delete;
+
+
+        void add( const coordhom& c, coordhom& r ) const
+        {
+            r.x = this->x + c.x;
+            r.y = this->y + c.y;
+            r.z = this->z + c.z;
+        }
 
         double operator[]( int i ) const
         {
@@ -76,6 +84,14 @@ namespace Geometry
 
         virtual std::ostream &
         print( std::ostream &out ) const = 0;
+    protected:
+        virtual void copy( coordhom& c ) const
+        {
+            c.x = this->x;
+            c.y = this->y;
+            c.z = this->z;
+            c.w = this->w;
+        }
 
     private:
         double w;

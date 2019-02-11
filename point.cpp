@@ -1,23 +1,18 @@
 #include "point.hpp"
+#include "vecteur.hpp"
 #include <cassert>
 #include <cmath>
-# include "vecteur.hpp"
 using namespace Geometry;
 
-point
-point::translate( const vecteur& t ) const
+point point::translate( const vecteur &t ) const
 {
-    return {this->x + t.x, this->y + t.y,this->z + t.z};
+    return {this->x + t.x, this->y + t.y, this->z + t.z};
 }
 
-point& 
-point::operator = ( const point& u )
+point 
+point::operator+( const vecteur &t ) const
 {
-    if ( this != &u )
-    {
-        this->x = u.x;
-        this->y = u.y;
-        this->z = u.z;
-    }
-    return *this;
+    point r;
+    this->add( t, r );
+    return r;
 }

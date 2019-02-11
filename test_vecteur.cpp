@@ -4,6 +4,7 @@
 # include "point.hpp"
 using namespace Geometry;
 
+
 int main()
 {
     point p{ 1., 2., 3.};    
@@ -16,6 +17,9 @@ int main()
     point r2 = p.translate({1.,0.,1.});
     vecteur w{1., 3., 5.};
     vecteur z = v ^ w;
+
+    point pw;
+    //pw.copy(w);
 
     vecteur n(0.1,0.2);
     std::cout << "n0 = " << n << std::endl;

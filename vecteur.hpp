@@ -41,7 +41,11 @@ namespace Geometry
         vecteur operator^( const vecteur &v ) const;
 
         vecteur &
-        operator=( const vecteur &u );
+        operator=( const vecteur &u )
+        {
+             u.copy(*this);
+             return *this;
+        }
 
         vecteur &
         operator=( vecteur &&u ) = default;

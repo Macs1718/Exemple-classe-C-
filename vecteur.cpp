@@ -10,19 +10,6 @@ vecteur::vecteur( double cx, double cy ) :
     z = std::sqrt( 1. - cx * cx - cy * cy );
 }
 
-vecteur& 
-vecteur::operator = ( const vecteur& u )
-{
-    if ( this != &u )
-    {
-        this->x = u.x;
-        this->y = u.y;
-        this->z = u.z;
-    }
-    return *this;
-}
-
-
 vecteur 
 vecteur::operator ^ ( const vecteur& v ) const
 {

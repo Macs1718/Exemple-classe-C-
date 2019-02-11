@@ -37,7 +37,11 @@ namespace Geometry
         point translate( const vecteur &t ) const;
 
         point &
-        operator=( const point &u );
+        operator=( const point &u )
+        {
+            u.copy(*this);
+            return *this;
+        }
 
         point &
         operator=( point &&u ) = default;
@@ -52,6 +56,7 @@ namespace Geometry
             out << " )";
             return out;
         }
+        point operator + ( const vecteur& t ) const;
     };
 }  // namespace Geometry
 

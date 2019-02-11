@@ -47,7 +47,8 @@ namespace Geometry
         operator=( vecteur &&u ) = default;
 
 
-        std::ostream &print( std::ostream &out ) const
+        virtual std::ostream &
+        print( std::ostream &out ) const override
         {
             out << "[ ";
 

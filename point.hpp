@@ -42,7 +42,8 @@ namespace Geometry
         point &
         operator=( point &&u ) = default;
 
-        std::ostream &print( std::ostream &out ) const
+        virtual std::ostream &
+        print( std::ostream &out ) const override
         {
             out << "( ";
 

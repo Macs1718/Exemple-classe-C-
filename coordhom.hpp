@@ -41,10 +41,6 @@ namespace Geometry
         double x, y, z;
 
 
-        coordhom translate( const coordhom &t ) const;
-
-        coordhom operator^( const coordhom &v ) const;
-
         coordhom &
         operator=( const coordhom &u );
 
@@ -78,12 +74,8 @@ namespace Geometry
             return &this->w;
         }
 
-        std::ostream &print( std::ostream &out ) const
-        {
-            out << this->x << ", " << this->y << ", "
-                << this->z;
-            return out;
-        }
+        virtual std::ostream &
+        print( std::ostream &out ) const = 0;
 
     private:
         double w;

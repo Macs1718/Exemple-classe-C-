@@ -18,7 +18,6 @@ vecteur::operator = ( const vecteur& u )
         this->x = u.x;
         this->y = u.y;
         this->z = u.z;
-        this->w = u.w;
     }
     return *this;
 }

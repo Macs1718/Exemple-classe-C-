@@ -1,24 +1,19 @@
 // Tests sur les vecteurs geometriques :
 # include <iostream>
 # include "vecteur.hpp"
+# include "point.hpp"
 using namespace Geometry;
 
 int main()
 {
-    vecteur p{ 1., 2., 3.};    
-    std::cout << "p is a point ? " << p.is_a_point()
-              << std::endl;;
-    p.set_as_point();
-    const vecteur q{0.,1.,2., true};
-    std::cout << "p is a point ? " << p.is_a_point()
-              << " and q is a point ? "
-              << q.is_a_point() << std::endl;
+    point p{ 1., 2., 3.};    
+    const vecteur q{0.,1.,2.};
     vecteur v;
     v.x = -2.; v.y = 0.; v.z = 3;
     std::cout << "v = " << v << std::endl;
-    vecteur r = p.translate(v);
+    point r = p.translate(v);
     std::cout << "r = " << r << std::endl;
-    vecteur r2 = p.translate({1.,0.,1.});
+    point r2 = p.translate({1.,0.,1.});
     vecteur w{1., 3., 5.};
     vecteur z = v ^ w;
 

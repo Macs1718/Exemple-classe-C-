@@ -3,23 +3,11 @@
 #include <cmath>
 using namespace Geometry;
 
-vecteur::vecteur( double cx, double cy )
-    : x( cx ),
-      y( cy ),
-      w( 0. )
+vecteur::vecteur( double cx, double cy ) : 
+    coordhom(cx, cy, 0., false )
 {
     assert( cx * cx + cy * cy < 1. );
     z = std::sqrt( 1. - cx * cx - cy * cy );
-}
-
-vecteur
-vecteur::translate( const vecteur& t ) const
-{
-    if ( this->is_a_point() )
-        return {this->x + t.x, this->y + t.y,
-                this->z + t.z, true};
-    else
-        return {this->x, this->y, this->z};
 }
 
 vecteur& 

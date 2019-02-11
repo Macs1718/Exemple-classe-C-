@@ -1,62 +1,56 @@
-#ifndef _vecteur_hpp_
-#define _vecteur_hpp_
+#ifndef _point_hpp_
+#define _point_hpp_
 #include <iostream>
 #include "coordhom.hpp"
 namespace Geometry
 {
+    class vecteur;
     /**
  * @brief Vecteur géométrique
  * @details Vecteur géométrique en trois dimensions, en coordonnées homogènes.
  * 
  */
-    class vecteur : public coordhom
+    class point : public coordhom
     {
     public:
         using iterator = double *;
         using const_iterator = const double *;
 
-        vecteur() : coordhom(false)
+        point() : coordhom(true)
         {
         }
-        vecteur( double cx, double cy, double cz) :
-            coordhom(false)
+        point( double cx, double cy, double cz) :
+            coordhom(cx, cy, cz, true )
         {
             //this->x = cx; this->y = cy;
             //this->z = cz; this->w = 0.;
         }
-        /** Construit un vecteur de norme 1,
-        cz est construit de telle sorte que
-        ||v||= 1
-    */
-        vecteur( double cx, double cy );
 
-        vecteur( const vecteur &u ) = default;
+        point( const point &u ) = default;
         /* : x(u.x), y(u.y),
                                  z(u.z), w(u.w)
     {}*/
-        vecteur( vecteur &&u ) = default;
+        point( point &&u ) = default;
 
-        ~vecteur() = default;
+        ~point() = default;
 
-        vecteur operator^( const vecteur &v ) const;
+        point translate( const vecteur &t ) const;
 
-        vecteur &
-        operator=( const vecteur &u );
+        point &
+        operator=( const point &u );
 
-        vecteur &
-        operator=( vecteur &&u ) = default;
-
+        point &
+        operator=( point &&u ) = default;
 
         std::ostream &print( std::ostream &out ) const
         {
-            out << "[ ";
+            out << "( ";
 
             out << this->x << ", " << this->y << ", "
                 << this->z;
-            out << " ]";
+            out << " )";
             return out;
         }
-
     };
 }  // namespace Geometry
 

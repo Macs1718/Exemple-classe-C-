@@ -54,8 +54,36 @@ public:
         return _coeff[i];
     }
 
-    Polynome derivate() const;
-    Polynome primitive( const K& p0 ) const;
+    Polynome derivate() const
+    {
+        Polynome dP(degree()-1);
+        for ( int i = 1; i <= degree(); ++i )
+            dP[i-1] = i*_coeff[i];
+        return dP;
+    }
+
+    Polynome primitive( const K& p0 = K(0) ) const
+    {
+        Polynome primP(degree()+1);
+        primP[0] = p0;
+        for ( int i = 0; i <= degree(); ++i )
+            primP[i+1] = _coeff[i]/K(i+1);
+        return primP;
+    }
+
+    template<typename K2>
+    auto operator() (const K2& x) const
+    {
+        using K3 = decltype(_coeff[0]*x);
+        K3 res = _coeff[0];
+        K2 xn  = x;
+        for ( int i = 1; i <= degree(); ++i )
+        {
+            res += K3(_coeff[i])*xn;
+            xn *= x;
+        }
+        return res;
+    }
 
 private:
     container _coeff;

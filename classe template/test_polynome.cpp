@@ -13,11 +13,11 @@ int main()
 
     Polynome<int> r(p+q);
     std::cout << "r = " << r << std::endl;
-    for ( int i = 0; i < 10; ++i )
+/*    for ( int i = 0; i < 10; ++i )
     {
         std::cout << "r(" << i << ") = " << r(i) << std::endl;
     }
     std::cout << "dr/dx = " << r.derivate() << std::endl;
-    std::cout << "primitive de r : " << r.primitive(0) << std::endl;
+    std::cout << "primitive de r : " << r.primitive(0) << std::endl;*/
     return 0;
 }

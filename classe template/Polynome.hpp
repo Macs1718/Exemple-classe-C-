@@ -2,6 +2,7 @@
 #define _POLYNOME_HPP_
 # include <vector>
 # include <cassert>
+# include <iostream>
 
 template<typename K>
 class Polynome
@@ -59,5 +60,24 @@ public:
 private:
     container _coeff;
 };
+
+template<typename K> std::ostream& 
+operator << ( std::ostream& out, const Polynome<K>& p )
+{
+    out << p[0];
+    for ( int i = 1; i <= p.degree(); ++i )
+    {
+        if ( p[i] > 0 )
+        {
+            out << "+" << p[i] << ".x^{" << i << "}";
+        }
+        else if ( p[i] < 0 )
+        {
+            out << "-" << p[i] << ".x^{" << i << "}";
+        }
+    }
+    return out;
+}
+
 
 #endif

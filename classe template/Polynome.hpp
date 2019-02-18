@@ -62,12 +62,13 @@ public:
         return dP;
     }
 
-    Polynome primitive( const K& p0 = K(0) ) const
+    auto primitive( const K& p0 = K(0) ) const
     {
-        Polynome primP(degree()+1);
+        using K2 = decltype(K(1)/3.);
+        Polynome<K2> primP(degree()+1);
         primP[0] = p0;
         for ( int i = 0; i <= degree(); ++i )
-            primP[i+1] = _coeff[i]/K(i+1);
+            primP[i+1] = _coeff[i]/(i+1.);
         return primP;
     }
 

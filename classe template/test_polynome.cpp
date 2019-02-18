@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Polynome.hpp"
 
 int main()
